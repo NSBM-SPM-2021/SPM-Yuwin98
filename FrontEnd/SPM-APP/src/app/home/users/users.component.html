@@ -1,0 +1,26 @@
+<div class="container my-lg-5">
+  <table class="table" *ngIf="(users$ | async) as courses">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>User Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses; let i = index">
+        <td>{{i}}</td>
+        <td>{{course.id}}</td>
+        <td>{{course.userName}}</td>
+        <td>{{course.email}}</td>
+        <td>
+          <a class="link-danger btn" (click)="deleteUser(course.id)"><i class="fa-trash fa"></i></a>
+          <span class="mx-2"></span>
+          <a><i class="fa-edit fa"></i></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

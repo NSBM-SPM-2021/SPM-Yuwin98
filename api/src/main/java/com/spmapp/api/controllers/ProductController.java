@@ -15,22 +15,24 @@ public class ProductController {
         this.productRepository = productRepository;
     }
 
-    @GetMapping("/product")
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/products")
     public List<Product> findAll() {
         return productRepository.findAll();
     }
 
-    @GetMapping("/product/{id}")
+    @GetMapping("/products/{id}")
     public Product findOne(@PathVariable String id) {
         return productRepository.findOne(id);
     }
 
-    @PostMapping("/product")
+    @PostMapping("/products")
     public Product addProduct(@RequestBody Product product) {
         return productRepository.addProduct(product);
     }
 
-    @DeleteMapping("/product/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
+    @DeleteMapping("/products/{id}")
     public Product deleteProduct(@PathVariable String id) {
         return productRepository.deleteProduct(id);
     }

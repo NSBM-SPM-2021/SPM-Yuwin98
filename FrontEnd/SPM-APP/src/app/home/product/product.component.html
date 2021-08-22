@@ -1,0 +1,28 @@
+<div class="container my-lg-5">
+  <table class="table" *ngIf="(products$ | async) as products">
+    <thead class="table-dark">
+    <tr>
+      <th>#</th>
+      <th>Book Id</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Genre</th>
+      <th>Publisher</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products; let i = index">
+      <td>{{i}}</td>
+      <td>{{product.id}}</td>
+      <td>{{product.title}}</td>
+      <td>{{product.author}}</td>
+      <td>{{product.genre}}</td>
+      <td>{{product.publisher}}</td>
+      <td>
+        <a class="link-danger btn" (click)="deleteProduct(product.id)"><i class="fa-trash fa"></i></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
