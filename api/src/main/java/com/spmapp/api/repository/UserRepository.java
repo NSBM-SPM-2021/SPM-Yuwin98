@@ -19,7 +19,8 @@ public class UserRepository {
             String id = faker.idNumber().ssnValid();
             String userName = faker.name().username();
             String password = faker.internet().password(6,18);
-            User user = new User(id,userName, password);
+            String email = faker.internet().emailAddress();
+            User user = new User(id,userName, password, email);
             userList.add(user);
         }
     }
@@ -38,7 +39,7 @@ public class UserRepository {
     }
 
     public  User deleteUser(String id) {
-        User userToDelete = userList.stream().filter(user -> user.getId().equals(id)).findFirst().orElse(new User("-1","N/A","N/A"));
+        User userToDelete = userList.stream().filter(user -> user.getId().equals(id)).findFirst().orElse(new User("-1","N/A","N/A", ""));
 
         userList.remove(userToDelete);
         return userToDelete;

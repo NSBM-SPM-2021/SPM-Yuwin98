@@ -17,6 +17,7 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/users")
     List<User> getAllUsers() {
         return userRepository.findAll();
@@ -32,6 +33,7 @@ public class UserController {
         return userRepository.addUser(user);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/users/{id}")
     User deleteUser(@PathVariable String id) {
         return userRepository.deleteUser(id);
