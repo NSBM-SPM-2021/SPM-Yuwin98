@@ -1,6 +1,7 @@
 package com.spmapp.api.controllers;
 
 import com.spmapp.api.models.Product;
+import com.spmapp.api.models.Response;
 import com.spmapp.api.repository.ProductRepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,25 +16,29 @@ public class ProductController {
         this.productRepository = productRepository;
     }
 
+
+
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/products")
     public List<Product> findAll() {
         return productRepository.findAll();
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/products/{id}")
     public Product findOne(@PathVariable String id) {
         return productRepository.findOne(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/products")
-    public Product addProduct(@RequestBody Product product) {
+    public Response<Product> addProduct(@RequestBody Product product) {
         return productRepository.addProduct(product);
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/products/{id}")
-    public Product deleteProduct(@PathVariable String id) {
+    public Response<Product> deleteProduct(@PathVariable String id) {
         return productRepository.deleteProduct(id);
     }
 }

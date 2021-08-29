@@ -1,0 +1,25 @@
+<div class="container  my-lg-5">
+  <form (ngSubmit)="addProduct()" [formGroup]="productForm" class="w-50">
+    <div class="mb-3">
+      <label for="userId" class="form-label">Product ID</label>
+      <input [readOnly]="'true'" [formControl]="productId" type="text" class="form-control" id="userId">
+    </div>
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input [formControl]="title" type="text" class="form-control" id="title" >
+    </div>
+    <div class="mb-3">
+      <label for="author" class="form-label">Author</label>
+      <input [formControl]="author" type="text" class="form-control" id="author">
+    </div>
+    <div class="mb-3">
+      <label for="genre" class="form-label">Genre</label>
+      <input [formControl]="genre" type="text" class="form-control" id="genre">
+    </div>
+    <div class="mb-3">
+      <label for="publisher" class="form-label">Publisher</label>
+      <input [formControl]="publisher" type="text" class="form-control" id="publisher">
+    </div>
+    <button class="btn btn-primary">Submit</button>
+  </form>
+</div>
