@@ -17,6 +17,8 @@ public class Product {
         this.publisher = publisher;
     }
 
+    public Product() {}
+
     public String getId() {
         return id;
     }

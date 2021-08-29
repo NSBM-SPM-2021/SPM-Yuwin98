@@ -1,6 +1,8 @@
 package com.spmapp.api.controllers;
 
+import com.spmapp.api.models.Response;
 import com.spmapp.api.models.User;
+import com.spmapp.api.models.UserResponse;
 import com.spmapp.api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,24 +21,28 @@ public class UserController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/users")
-    List<User> getAllUsers() {
+    List<UserResponse> getAllUsers() {
         return userRepository.findAll();
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/users/{id}")
-    User getUser(@PathVariable String id) {
+    UserResponse getUser(@PathVariable String id) {
         return userRepository.findOne(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/users")
-    User addUser(@RequestBody User user) {
+    Response<User> addUser(@RequestBody User user) {
         return userRepository.addUser(user);
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/users/{id}")
-    User deleteUser(@PathVariable String id) {
+    Response<User> deleteUser(@PathVariable String id) {
         return userRepository.deleteUser(id);
     }
+
+
 
 }

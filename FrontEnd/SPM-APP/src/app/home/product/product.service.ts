@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {shareReplay, tap} from "rxjs/operators";
+import {User} from "../users/user.service";
 
 export interface Product {
   id: string,
@@ -39,6 +40,20 @@ export class ProductService {
     this.subject.next(products.filter(product => product.id !== id))
 
     this.http.delete(`${this.BASE_URL}/products/${id}`).subscribe()
+
+  }
+
+  createProduct(product: Product) {
+    const productList = this.subject.getValue();
+
+    const newProducts: Product[] = productList.slice();
+    newProducts.push(product);
+    this.subject.next(newProducts);
+
+    return this.http.post(`${this.BASE_URL}/products`, product)
+      .pipe(
+        shareReplay()
+      )
 
   }
 }
