@@ -43,6 +43,10 @@ export class ProductService {
 
   }
 
+  findProduct(id: string): Product {
+    return this.subject.value.filter(product => product.id === id)[0];
+  }
+
   createProduct(product: Product) {
     const productList = this.subject.getValue();
 
@@ -55,5 +59,18 @@ export class ProductService {
         shareReplay()
       )
 
+  }
+
+  updateProduct(product: Product) {
+    const productList = this.subject.getValue();
+
+    const newProducts: Product[] = productList.slice();
+    newProducts.push(product);
+    this.subject.next(newProducts);
+
+    return this.http.put(`${this.BASE_URL}/products`, product)
+      .pipe(
+        shareReplay()
+      )
   }
 }

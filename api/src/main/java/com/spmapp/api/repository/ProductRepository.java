@@ -46,7 +46,7 @@ public class ProductRepository {
     public List<Product> findAll() {
         log.info("Find all products");
         String sql = "Select product_id, title, author, genre, publisher from product ORDER BY id DESC";
-        return jdbcTemplate.query(sql,productRowMapper);
+        return jdbcTemplate.query(sql, productRowMapper);
     }
 
     public Product findOne(String id) {
@@ -60,7 +60,7 @@ public class ProductRepository {
 
         int insert = jdbcTemplate.update(sql, product.getId(), product.getTitle(), product.getAuthor(), product.getGenre(), product.getPublisher());
 
-        if(insert == 1) {
+        if (insert == 1) {
             response.setMessage("Product created");
             response.setStatusCode(201);
             response.setData(Optional.of(product));
@@ -72,11 +72,27 @@ public class ProductRepository {
         return response;
     }
 
+    public Response<Product> updateProduct(Product product) {
+        Response<Product> response = new Response<>();
+        String sql = "update product set title = ?, author = ?, genre = ? , publisher = ? where product_id = ?";
+
+        int update = jdbcTemplate.update(sql, product.getTitle(), product.getAuthor(), product.getGenre(), product.getPublisher(), product.getId());
+
+        if (update == 1) {
+            response.setMessage("Product updated");
+            response.setStatusCode(200);
+            return response;
+        }
+        response.setMessage("Product update failed");
+        response.setStatusCode(500);
+        return response;
+    }
+
     public Response<Product> deleteProduct(String id) {
         Response<Product> response = new Response<>();
         String sql = "Delete from product where product_id = ?";
         int delete = jdbcTemplate.update(sql, id);
-        if(delete == 1) {
+        if (delete == 1) {
             response.setMessage("Product deleted successfully");
             response.setStatusCode(200);
             return response;

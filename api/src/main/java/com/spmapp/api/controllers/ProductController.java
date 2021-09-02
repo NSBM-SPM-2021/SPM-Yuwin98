@@ -37,6 +37,12 @@ public class ProductController {
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
+    @PutMapping("/products")
+    public Response<Product> updateProduct(@RequestBody Product product) {
+        return productRepository.updateProduct(product);
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/products/{id}")
     public Response<Product> deleteProduct(@PathVariable String id) {
         return productRepository.deleteProduct(id);
