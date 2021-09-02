@@ -58,4 +58,21 @@ export class UserService {
 
   }
 
+  findUser(id: string): User {
+    return this.subject.value.filter(user => user.userId === id)[0];
+  }
+
+  updateUser(user: User) {
+    const userList = this.subject.getValue();
+
+    const newCourses: User[] = userList.slice();
+    newCourses.push(user);
+    this.subject.next(newCourses);
+
+    return this.http.put(`${this.BASE_URL}/users`, user)
+      .pipe(
+        shareReplay()
+      )
+  }
+
 }

@@ -44,7 +44,6 @@ export class AdduserComponent implements OnInit {
 
   addUser() {
     if(!this.userForm.valid) {
-      console.log("Form invalid");
       console.log(this.userForm.value);
     }
 

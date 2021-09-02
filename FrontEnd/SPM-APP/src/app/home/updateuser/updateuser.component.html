@@ -1,0 +1,18 @@
+<div class="container  my-lg-5">
+  <form (ngSubmit)="updateUser()" [formGroup]="userForm" class="w-50">
+    <div class="mb-3">
+      <label for="userId" class="form-label">User ID</label>
+      <input [readOnly]="'true'" [formControl]="userId" type="text" class="form-control" id="userId">
+    </div>
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input [formControl]="userName" type="text" class="form-control" id="username" >
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input [formControl]="email" type="email" class="form-control" id="email">
+    </div>
+    <button class="btn me-3" (click)="cancelUpdate()">Cancel</button>
+    <button class="btn btn-primary">Update</button>
+  </form>
+</div>

@@ -60,7 +60,7 @@ public class UserRepository {
 
     public Response<User> addUser(User user) {
         Response<User> response = new Response<>();
-        log.info(user.getUserId() + ":" + user.getUserName() + ":" + user.getEmail());
+
         String sql = "Insert into user(user_id, username, password, email) VALUES(?,?,?,?)";
 
         int insert = jdbcTemplate.update(sql, user.getUserId(), user.getUserName(), user.getPassword(), user.getEmail());
@@ -77,12 +77,31 @@ public class UserRepository {
         return response;
     }
 
+    public Response<User> updateUser(User user) {
+        Response<User> response = new Response<>();
+
+        String sql = "update user set username = ?, email = ? where user_id = ?";
+
+        int update = jdbcTemplate.update(sql, user.getUserName(), user.getEmail(), user.getUserId());
+
+        if (update == 1) {
+            response.setStatusCode(200);
+            response.setMessage("User updated");
+            return response;
+        }
+
+        response.setStatusCode(500);
+        response.setMessage("User update failed");
+
+        return response;
+    }
+
     public Response<User> deleteUser(String id) {
         Response<User> response = new Response<>();
         String sql = "Delete from user where user_id = ?";
         int delete = jdbcTemplate.update(sql, id);
 
-        if(delete == 1) {
+        if (delete == 1) {
             response.setStatusCode(200);
             response.setMessage("User deleted successfully");
             return response;

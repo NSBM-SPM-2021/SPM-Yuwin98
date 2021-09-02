@@ -1,6 +1,6 @@
 <div class="container my-lg-5">
   <div class="btn btn-primary user-button" routerLink="/users/new"><i class="fas fa-plus"></i> New User</div>
-  <table class="table" *ngIf="(users$ | async) as courses">
+  <table class="table" *ngIf="(users$ | async) as users">
     <thead class="table-dark">
       <tr>
         <th>#</th>
@@ -11,13 +11,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let course of courses; let i = index">
+      <tr *ngFor="let user of users; let i = index">
         <td>{{i+1}}</td>
-        <td>{{course.userId}}</td>
-        <td>{{course.userName}}</td>
-        <td>{{course.email}}</td>
+        <td>{{user.userId}}</td>
+        <td>{{user.userName}}</td>
+        <td>{{user.email}}</td>
         <td>
-          <a class="link-danger btn" (click)="deleteUser(course.userId)"><i class="fa-trash fa"></i></a>
+          <a class="link-danger btn" (click)="deleteUser(user.userId)"><i class="fa-trash fa"></i></a>
+          <a class="btn" [routerLink]="['update', user.userId]" ><i class="fa-edit fa"></i></a>
         </td>
       </tr>
     </tbody>

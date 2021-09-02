@@ -15,13 +15,14 @@
     <tbody>
     <tr *ngFor="let product of products; let i = index">
       <td>{{i+1}}</td>
-      <td>{{product.id}}</td>
-      <td>{{product.title}}</td>
-      <td>{{product.author}}</td>
-      <td>{{product.genre}}</td>
-      <td>{{product.publisher}}</td>
-      <td>
+      <td class="td-width">{{product.id}}</td>
+      <td class="td-width">{{product.title}}</td>
+      <td class="td-width">{{product.author}}</td>
+      <td class="td-width">{{product.genre}}</td>
+      <td class="td-width">{{product.publisher}}</td>
+      <td class="td-width">
         <a class="link-danger btn" (click)="deleteProduct(product.id)"><i class="fa-trash fa"></i></a>
+        <a class="btn" [routerLink]="['update', product.id]" ><i class="fa-edit fa"></i></a>
       </td>
     </tr>
     </tbody>
