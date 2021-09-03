@@ -19,24 +19,29 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/users")
     List<UserResponse> getAllUsers() {
         return userRepository.findAll();
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/users/{id}")
     UserResponse getUser(@PathVariable String id) {
         return userRepository.findOne(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/users")
     Response<User> addUser(@RequestBody User user) {
         return userRepository.addUser(user);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping("/users")
     Response<User> updateUser(@RequestBody User user) {return userRepository.updateUser(user);}
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/users/{id}")
     Response<User> deleteUser(@PathVariable String id) {
         return userRepository.deleteUser(id);

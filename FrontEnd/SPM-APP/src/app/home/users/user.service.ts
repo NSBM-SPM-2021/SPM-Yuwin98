@@ -19,7 +19,7 @@ export interface User {
 export class UserService {
 
 
-  private BASE_URL: string = "http://localhost:8080"
+  private BASE_URL: string = "http://Spmbookshop-env.eba-j93emkwq.us-east-1.elasticbeanstalk.com"
 
   private subject = new BehaviorSubject<User[]>([]);
   users$ = this.subject.asObservable();
