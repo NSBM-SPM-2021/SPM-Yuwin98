@@ -17,7 +17,7 @@ export interface Product {
 })
 export class ProductService {
 
-  private BASE_URL = "http://localhost:8080/"
+  private BASE_URL = "http://Spmbookshop-env.eba-j93emkwq.us-east-1.elasticbeanstalk.com"
 
   private subject = new BehaviorSubject<Product[]>([])
   products$ = this.subject.asObservable()
