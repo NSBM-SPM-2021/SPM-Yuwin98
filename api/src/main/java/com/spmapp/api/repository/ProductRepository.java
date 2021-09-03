@@ -81,6 +81,7 @@ public class ProductRepository {
         if (update == 1) {
             response.setMessage("Product updated");
             response.setStatusCode(200);
+            response.setData(Optional.of(product));
             return response;
         }
         response.setMessage("Product update failed");

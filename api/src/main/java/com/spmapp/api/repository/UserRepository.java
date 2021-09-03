@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class UserRepository {
@@ -68,6 +69,7 @@ public class UserRepository {
         if (insert == 1) {
             response.setStatusCode(201);
             response.setMessage("User created");
+            response.setData(Optional.of(user));
             return response;
         }
 
@@ -87,6 +89,7 @@ public class UserRepository {
         if (update == 1) {
             response.setStatusCode(200);
             response.setMessage("User updated");
+            response.setData(Optional.of(user));
             return response;
         }
 
