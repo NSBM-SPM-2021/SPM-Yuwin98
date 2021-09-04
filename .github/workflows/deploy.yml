@@ -1,9 +1,9 @@
-name: deploy-spm-bookshop-to-s3
+name: deploy-spm-bookshop-to-aws-s3
 
 on:
   push:
     branches:
-      - master
+      - main
 
 defaults:
   run:
