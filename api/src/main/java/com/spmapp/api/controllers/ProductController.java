@@ -15,31 +15,32 @@ public class ProductController {
     public ProductController(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
+    private final String origin = "http://spm-bookshop.s3-website-us-east-1.amazonaws.com";
 
 
 
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = origin)
     @GetMapping("/products")
     public List<Product> findAll() {
         return productRepository.findAll();
     }
 
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = origin)
     @GetMapping("/products/{id}")
     public Product findOne(@PathVariable String id) {
         return productRepository.findOne(id);
     }
 
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = origin)
     @PostMapping("/products")
     public Response<Product> addProduct(@RequestBody Product product) {
         return productRepository.addProduct(product);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = origin)
     @PutMapping("/products")
     public Response<Product> updateProduct(@RequestBody Product product) {
         return productRepository.updateProduct(product);
