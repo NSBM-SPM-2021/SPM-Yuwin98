@@ -1,8 +1,7 @@
 import {Injectable, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {BehaviorSubject, Observable} from "rxjs";
-import {share, shareReplay, tap} from "rxjs/operators";
-import {Response} from "../../models/Response";
+import {BehaviorSubject} from "rxjs";
+import { shareReplay, tap} from "rxjs/operators";
 
 
 export interface User {

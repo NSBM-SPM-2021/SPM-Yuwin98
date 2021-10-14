@@ -1,7 +1,6 @@
 package com.spmapp.api.controllers;
 
 import com.spmapp.api.ApiApplication;
-import com.spmapp.api.models.Product;
 import com.spmapp.api.models.Response;
 import com.spmapp.api.models.User;
 import com.spmapp.api.models.UserResponse;
@@ -13,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
 
 
 @SpringBootTest(classes = ApiApplication.class, webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
