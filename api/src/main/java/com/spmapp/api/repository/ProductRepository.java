@@ -44,7 +44,6 @@ public class ProductRepository {
     }
 
     public List<Product> findAll() {
-        log.info("Find all products");
         String sql = "Select product_id, title, author, genre, publisher from product ORDER BY id DESC";
         return jdbcTemplate.query(sql, productRowMapper);
     }
@@ -68,7 +67,7 @@ public class ProductRepository {
         }
         response.setMessage("Product creation failed");
         response.setStatusCode(500);
-        response.setData(Optional.<Product>empty());
+        response.setData(Optional.empty());
         return response;
     }
 
